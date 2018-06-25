@@ -1,16 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { HttpModule } from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
+import{ValidateService} from './validate.service'
+import{FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages';
+import { CommonModule } from '@angular/common';
+import {IsLoginService} from './is-login.service';
+import { UpdateComponent } from './components/update/update.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignupComponent,
+    LoginComponent,
+    HomeComponent,
+    UpdateComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot([
+      {path:'signup',component:SignupComponent,},
+      {path:'login',component:LoginComponent},
+      {path:'home',component:HomeComponent},
+      {path:'update',component:UpdateComponent}
+    ]),
+    HttpClientModule,
+    FormsModule,
+    HttpModule,
+    FlashMessagesModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [ValidateService,FlashMessagesService,IsLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
