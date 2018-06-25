@@ -13,6 +13,8 @@ import{FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages'
 import { CommonModule } from '@angular/common';
 import {IsLoginService} from './is-login.service';
 import { UpdateComponent } from './components/update/update.component';
+import { DeleteComponent } from './components/delete/delete.component';
+import { ShowallComponent } from './components/showall/showall.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,14 @@ import { UpdateComponent } from './components/update/update.component';
     LoginComponent,
     HomeComponent,
     UpdateComponent,
+    DeleteComponent,
+    ShowallComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      {path:'showall',component:ShowallComponent},
+      {path:'delete',component:DeleteComponent},
       {path:'signup',component:SignupComponent,},
       {path:'login',component:LoginComponent},
       {path:'home',component:HomeComponent},

@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>username</th>
+    <th>emailid</th>
+    <th>password</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.emailid}}</td>
+    <td>{{user.password}}</td>
+    <td>{{user.username}}</td>  
+    <button (click)="onsubmitDelete(user)">delete</button>
+  </tr>
+
+</table>

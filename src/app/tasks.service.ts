@@ -50,4 +50,22 @@ export class TasksService {
        })
      })
    }
+   showPeople(){
+     return new Promise(resolve=>{
+       this.http.get('http://localhost:4600/routes/getall').subscribe(data=>{
+         resolve(data);
+       },err=>{
+         console.log(err);
+       })
+     })
+   }
+   deletePeople(email){
+     return new Promise(resolve=>{
+       this.http.delete('http://localhost:4600/routes/delete/'+email).subscribe(data=>{
+         resolve(data);
+       },err=>{
+         console.log(err);
+       })
+     })
+   }
 }

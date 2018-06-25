@@ -64,6 +64,15 @@ router.get('/getperson/:email',(req,res)=>{
     });
 });
 
+router.get('/getall',(req,res)=>{
+    var sql='SELECT * FROM People ';
+    con.query(sql,function(err,result){
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    })
+})
+
 router.post('/addperson',(req,res)=>{
     var email=req.body.email;
     var pass=req.body.pass;
@@ -93,6 +102,14 @@ router.put('/updateperson/:mail/:pass',(req,res)=>{
         console.log(result.affectedRows + " record(s) updated");
     });
     res.redirect('/');
+})
+
+router.delete('/delete/:email',(req,res)=>{
+    var sql = "DELETE FROM People WHERE emailid ="+mysql.escape(req.params.email);
+    con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("Number of records deleted: " + result.affectedRows);
+  });
 })
 
 
